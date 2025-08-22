@@ -1,0 +1,286 @@
+/* =============================== BuddyDo Styles — Enfoque Sereno Polished Version =============================== */
+/* -------- VARIABLES -------- */
+:root {
+  /* Light mode */
+  --color-bg-main: #2E3A48;
+  /* Azul Noche Suave */
+  --color-bg-content: #F8F5F1;
+  /* Blanco Hueso */
+  --color-accent: #75B2A9;
+  /* Verde Menta */
+  --color-border: #D1D5DB;
+  /* Gris Claro */
+  --color-alert: #F28C8C;
+  /* Coral Suave */
+  --color-text: #2E3A48;
+  /* Dark mode */
+  --dark-bg-main: #070A0E;
+  /* Gris Oscuro */
+  --dark-bg-content: #2C2824;
+  /* Gris Oscuro Desaturado */
+  --dark-accent: #8A4D56;
+  /* Rosa Polvo */
+  --dark-border: #D1C5B7;
+  /* Amarillo Cálido */
+  --dark-alert: #0D7373;
+  /* Cian Oscuro */
+  --dark-text: #D1C5B7;
+  /* Transition timing */
+  --transition-speed: 0.4s;
+}
+
+/* -------- GLOBAL -------- */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--color-bg-main);
+  color: var(--color-text);
+  line-height: 1.6;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0.5em 0;
+  transition: color var(--transition-speed) ease;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: var(--color-accent);
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #5d948c;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.5em;
+  margin: 0.3em 0 1em 0;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 1em;
+  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+textarea {
+  resize: vertical;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 1.5em 0;
+}
+
+/* -------- CONTAINERS -------- */
+#mainContainer,
+#appContainer {
+  background: var(--color-bg-content);
+  margin: 2em auto;
+  padding: 2em;
+  border-radius: 10px;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+header {
+  text-align: center;
+  padding-bottom: 1em;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.subtitle {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* -------- LOGIN SECTION -------- */
+#loginSection {
+  text-align: center;
+}
+
+#loginSection h1 {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 1em;
+}
+
+/* Custom file upload */
+input[type="file"] {
+  display: none;
+}
+
+.file-upload-label {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 1em;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.file-upload-label:hover {
+  background-color: #5d948c;
+  transform: translateY(-2px);
+}
+
+/* -------- CONTACTS TABLE -------- */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+#contactsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+#contactsTable th,
+#contactsTable td {
+  border: 1px solid var(--color-border);
+  padding: 0.6em;
+  text-align: left;
+  font-size: 0.9em;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+#contactsTable th {
+  background-color: var(--color-bg-main);
+  color: #fff;
+}
+
+#contactsTable tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.btn-edit {
+  background-color: var(--color-accent);
+  margin-right: 0.4em;
+}
+
+.btn-delete {
+  background-color: var(--color-alert);
+}
+
+/* -------- NOTES (Activity Log) -------- */
+.note-item {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  padding: 0.8em;
+  margin-bottom: 0.8em;
+  border-radius: 6px;
+  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+/* -------- MESSAGES -------- */
+#fileMessage,
+#loginMessage,
+#createMessage {
+  margin-top: 0.5em;
+  font-weight: 600;
+}
+
+/* -------- DARK MODE -------- */
+body.dark-mode {
+  background-color: var(--dark-bg-main);
+  color: var(--dark-text);
+}
+
+body.dark-mode #mainContainer,
+body.dark-mode #appContainer {
+  background: var(--dark-bg-content);
+  color: var(--dark-text);
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background: #111;
+  border: 1px solid var(--dark-border);
+  color: var(--dark-text);
+}
+
+body.dark-mode button {
+  background-color: var(--dark-accent);
+}
+
+body.dark-mode button:hover {
+  background-color: #703a44;
+}
+
+body.dark-mode #contactsTable th {
+  background-color: var(--dark-border);
+  color: #111;
+}
+
+body.dark-mode #contactsTable td {
+  border-color: var(--dark-border);
+}
+
+body.dark-mode .btn-delete {
+  background-color: var(--dark-alert);
+}
+
+body.dark-mode .note-item {
+  background: #1a1a1a;
+  border-color: var(--dark-border);
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+
+  header h2 {
+    font-size: 1.2em;
+  }
+
+  button,
+  .file-upload-label {
+    width: 100%;
+    margin-top: 0.5em;
+  }
+
+  #contactsTable th,
+  #contactsTable td {
+    font-size: 0.8em;
+    padding: 0.4em;
+  }
+
+  .note-item {
+    font-size: 0.85em;
+  }
+}
