@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BuddyDo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body> <!-- ========= MAIN CONTAINER (wraps auth + app) ========= -->
+  <div id="mainContainer"> <!-- ========= AUTH: LOAD / LOGIN ========= -->
+    <section id="loginSection">
+      <h1>Welcome to BuddyDo</h1>
+      <p>Please upload your encrypted <code>.buddydo</code> data file to begin.</p> <label for="fileInput"
+        class="file-upload-label">Upload BuddyDo File</label> <input type="file" id="fileInput"
+        accept=".buddydo,.todobuddy">
+      <div id="fileMessage"></div>
+      <div id="credentialsContainer" style="display:none;">
+        <hr />
+        <p>Valid file detected. Sign in to continue.</p> <label for="userInput">Username:</label> <input type="text"
+          id="userInput" autocomplete="username" /> <label for="passInput">Password:</label> <input type="password"
+          id="passInput" autocomplete="current-password" /> <button id="loginButton">Sign In</button>
+        <div id="loginMessage"></div>
+      </div>
+      <hr /> <a href="#" id="showCreateLink">Or create a new BuddyDo file</a>
+    </section> <!-- ========= AUTH: CREATE NEW ENCRYPTED FILE ========= -->
+    <section id="creationSection" style="display:none;">
+      <h1>Create New BuddyDo File</h1>
+      <p>Choose a username and password for your secure file.</p> <label for="newUserInput">New username:</label> <input
+        type="text" id="newUserInput" autocomplete="username" /> <label for="newPassInput">New password:</label> <input
+        type="password" id="newPassInput" autocomplete="new-password" /> <label for="confirmPassInput">Confirm
+        password:</label> <input type="password" id="confirmPassInput" autocomplete="new-password" /> <button
+        id="createFileButton">Create & Download</button>
+      <div id="createMessage"></div>
+      <hr /> <a href="#" id="showLoginLink">I already have a file</a>
+    </section>
+  </div> <!-- ========= APP ========= -->
+  <div id="appContainer" style="display:none;">
+    <header>
+      <h2>BuddyDo — Contacts & Activity</h2>
+      <p class="subtitle">Manage your contacts and track activity securely.</p>
+    </header> <!-- ======= CONTACTS (new UI we’ll wire up next) ======= -->
+    <section id="contactsSection">
+      <h3>Contacts</h3> <!-- Add / Edit Contact Form -->
+      <div id="contactForm"> <input type="text" id="contactName" placeholder="Full name" /> <input type="email"
+          id="contactEmail" placeholder="Email" /> <input type="tel" id="contactPhone" placeholder="Phone" /> <input
+          type="text" id="contactTag" placeholder="Tag (optional)" /> <textarea id="contactNote"
+          placeholder="Notes (optional)" rows="3"></textarea> <button id="addContactButton">Add Contact</button> <button
+          id="updateContactButton" style="display:none;">Update Contact</button> <button id="cancelEditButton"
+          style="display:none;">Cancel</button> </div> <!-- Contacts Table -->
+      <div class="table-wrapper">
+        <table id="contactsTable" border="1" cellspacing="0" cellpadding="6">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Tag</th>
+              <th>Note</th>
+              <th>Last Updated</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="contactsBody"> <!-- Dynamic rows will be injected here --> </tbody>
+        </table>
+      </div>
+    </section>
+    <hr /> <!-- ======= ACTIVITY LOG (keeps current Notes logic) ======= -->
+    <section id="activitySection">
+      <h3>Activity Log</h3>
+      <div id="notesList"><!-- renderNotes() outputs here --></div>
+      <h4>Add New Log Entry</h4> <textarea id="newNoteContent" placeholder="Write your new activity log entry..."
+        rows="4"></textarea> <button id="addNoteButton">Add Log Entry</button>
+    </section>
+    <hr /> <!-- ======= SAVE / EXPORT ======= -->
+    <div id="saveArea"> <button id="saveButton">Save & Download Changes</button>
+      <p class="hint">Your data is stored in an encrypted text file. Keep it safe.</p>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+
+</html>
