@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body> <!-- ========= MAIN CONTAINER (wraps auth + app) ========= -->
-  <div id="mainContainer"> <!-- ========= AUTH: LOAD / LOGIN ========= -->
+<body>
+  <div id="mainContainer">
     <section id="loginSection">
       <h1>Welcome to BuddyDo</h1>
-      <p>Please upload your encrypted <code>.buddydo</code> data file to begin.</p> <label for="fileInput"
+      <p>Please upload your encrypted <code>.buddydo</code> data file to begin</p> <label for="fileInput"
         class="file-upload-label">Upload BuddyDo File</label> <input type="file" id="fileInput"
         accept=".buddydo,.todobuddy">
       <div id="fileMessage"></div>
@@ -24,10 +24,10 @@
         <div id="loginMessage"></div>
       </div>
       <hr /> <a href="#" id="showCreateLink">Or create a new BuddyDo file</a>
-    </section> <!-- ========= AUTH: CREATE NEW ENCRYPTED FILE ========= -->
+    </section>
     <section id="creationSection" style="display:none;">
       <h1>Create New BuddyDo File</h1>
-      <p>Choose a username and password for your secure file.</p> <label for="newUserInput">New username:</label> <input
+      <p>Choose a username and password for your secure file</p> <label for="newUserInput">New username:</label> <input
         type="text" id="newUserInput" autocomplete="username" /> <label for="newPassInput">New password:</label> <input
         type="password" id="newPassInput" autocomplete="new-password" /> <label for="confirmPassInput">Confirm
         password:</label> <input type="password" id="confirmPassInput" autocomplete="new-password" /> <button
@@ -35,20 +35,20 @@
       <div id="createMessage"></div>
       <hr /> <a href="#" id="showLoginLink">I already have a file</a>
     </section>
-  </div> <!-- ========= APP ========= -->
+  </div>
   <div id="appContainer" style="display:none;">
     <header>
       <h2>BuddyDo — Contacts & Activity</h2>
-      <p class="subtitle">Manage your contacts and track activity securely.</p>
-    </header> <!-- ======= CONTACTS (new UI we’ll wire up next) ======= -->
+      <p class="subtitle">Manage your contacts and track activity securely</p>
+    </header>
     <section id="contactsSection">
-      <h3>Contacts</h3> <!-- Add / Edit Contact Form -->
+      <h3>Contacts</h3>
       <div id="contactForm"> <input type="text" id="contactName" placeholder="Full name" /> <input type="email"
           id="contactEmail" placeholder="Email" /> <input type="tel" id="contactPhone" placeholder="Phone" /> <input
           type="text" id="contactTag" placeholder="Tag (optional)" /> <textarea id="contactNote"
           placeholder="Notes (optional)" rows="3"></textarea> <button id="addContactButton">Add Contact</button> <button
           id="updateContactButton" style="display:none;">Update Contact</button> <button id="cancelEditButton"
-          style="display:none;">Cancel</button> </div> <!-- Contacts Table -->
+          style="display:none;">Cancel</button> </div>
       <div class="table-wrapper">
         <table id="contactsTable" border="1" cellspacing="0" cellpadding="6">
           <thead>
@@ -62,20 +62,20 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody id="contactsBody"> <!-- Dynamic rows will be injected here --> </tbody>
+          <tbody id="contactsBody">  </tbody>
         </table>
       </div>
     </section>
-    <hr /> <!-- ======= ACTIVITY LOG (keeps current Notes logic) ======= -->
+    <hr />
     <section id="activitySection">
       <h3>Activity Log</h3>
-      <div id="notesList"><!-- renderNotes() outputs here --></div>
+      <div id="notesList"></div>
       <h4>Add New Log Entry</h4> <textarea id="newNoteContent" placeholder="Write your new activity log entry..."
         rows="4"></textarea> <button id="addNoteButton">Add Log Entry</button>
     </section>
-    <hr /> <!-- ======= SAVE / EXPORT ======= -->
+    <hr />
     <div id="saveArea"> <button id="saveButton">Save & Download Changes</button>
-      <p class="hint">Your data is stored in an encrypted text file. Keep it safe.</p>
+      <p class="hint">Your data is stored in an encrypted text file. Keep it safe!</p>
     </div>
   </div>
   <script src="scripts.js"></script>
