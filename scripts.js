@@ -1,9 +1,3 @@
-// ===============================================
-// || BuddyDo scripts.js ||
-// || Login + Encrypted CSV + Contacts CRUD ||
-// || + Light/Dark Mode Toggle (icons) ||
-// ===============================================
-
 // ========== 1) DOM ELEMENTS ==========
 const fileInput = document.getElementById("fileInput");
 const fileMessage = document.getElementById("fileMessage");
@@ -150,17 +144,17 @@ fileInput?.addEventListener("change", (ev) => {
     try {
       const content = e.target.result;
       const decrypted = descifrarContenido(content);
-      if (!decrypted) throw new Error("Decryption failed.");
+      if (!decrypted) throw new Error("Decryption failed ⛓️‍💥​");
       if (validateHeaders(decrypted)) {
         csvData = parseCSV(decrypted);
         credentialsContainer.style.display = "block";
-        fileMessage.textContent = "✅ Valid file.";
+        fileMessage.textContent = "✅🔗​ Valid file";
         fileMessage.style.color = "green";
       } else {
-        throw new Error("Invalid file structure.");
+        throw new Error("Invalid file structure 🧬​");
       }
     } catch (err) {
-      fileMessage.textContent = "Corrupt or invalid file.";
+      fileMessage.textContent = "Corrupt or invalid file ⚠️​";
       fileMessage.style.color = "red";
       console.error(err);
     }
@@ -181,7 +175,7 @@ loginButton?.addEventListener("click", () => {
     renderNotes();
     renderContacts();
   } else {
-    loginMessage.textContent = "❌ Incorrect username or password.";
+    loginMessage.textContent = "❌ Incorrect username or password";
   }
 });
 
@@ -204,11 +198,11 @@ createFileButton?.addEventListener("click", () => {
   createMessage.textContent = "";
 
   if (!u || !p) {
-    createMessage.textContent = "Username and password are required.";
+    createMessage.textContent = "Username and password are required";
     return;
   }
   if (p !== c) {
-    createMessage.textContent = "Passwords do not match.";
+    createMessage.textContent = "Passwords do not match";
     return;
   }
 
@@ -227,7 +221,7 @@ createFileButton?.addEventListener("click", () => {
     },
   ];
   exportAndDownload(".buddydo");
-  createMessage.textContent = "✅ File created. Keep it safe.";
+  createMessage.textContent = "✅ File created, keep it safe! 🔐​";
 });
 
 // ========== 10) ACTIVITY LOG (legacy Notes) ==========
@@ -240,7 +234,7 @@ function renderNotes() {
   );
 
   if (notes.length === 0) {
-    notesList.innerHTML = "<p>No entries yet. Add one below.</p>";
+    notesList.innerHTML = "<p>No entries yet, add one below</p>";
     return;
   }
 
@@ -257,7 +251,7 @@ function renderNotes() {
 addNoteButton?.addEventListener("click", () => {
   const content = (newNoteContent.value || "").trim();
   if (!content) {
-    alert("Log entry cannot be empty.");
+    alert("Log entry cannot be empty");
     return;
   }
   csvData.push({
@@ -285,7 +279,7 @@ function renderContacts() {
   if (contacts.length === 0) {
     const tr = document.createElement("tr");
     tr.innerHTML =
-      '<td colspan="7" style="text-align:center;">No contacts yet. Add one above.</td>';
+      '<td colspan="7" style="text-align:center;">No contacts yet, add one above.</td>';
     contactsBody.appendChild(tr);
     return;
   }
@@ -328,7 +322,7 @@ addContactButton?.addEventListener("click", () => {
   const tag = contactTag.value.trim();
   const note = contactNote.value.trim();
   if (!name) {
-    alert("Name is required.");
+    alert("Name is required!");
     return;
   }
   const logID = "C" + Date.now();
@@ -439,7 +433,7 @@ function exportAndDownload(ext = ".buddydo") {
   const rawCSV = convertirDatosACSV(csvData);
   const encrypted = cifrarContenido(rawCSV);
   if (!encrypted) {
-    alert("Encryption error. Could not save.");
+    alert("Encryption error, Could not save.");
     return;
   }
   const blob = new Blob([encrypted], { type: "text/plain;charset=utf-8" });
