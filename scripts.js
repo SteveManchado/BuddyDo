@@ -77,6 +77,7 @@ function descifrarContenido(encodedText) {
 function parseCSV(text) {
   const lines = text.replace(/\r/g, "").trim().split("\n");
   if (lines.length < 2) return [];
+
   const headers = lines[0].split(",").map((h) => h.trim());
   const dataRows = lines.slice(1);
 
@@ -84,16 +85,34 @@ function parseCSV(text) {
     const values = [];
     let current = "";
     let inQuotes = false;
-    for (const ch of row) {
-      if (ch === '"' && inQuotes === false) {
-        inQuotes = true;
-      } else if (ch === '"' && inQuotes === true) {
-        inQuotes = false;
-      } else if (ch === "," && inQuotes === false) {
-        values.push(current);
-        current = "";
+
+    for (let i = 0; i < row.length; i++) {
+      const ch = row[i];
+
+      if (inQuotes) {
+        // Estando dentro de comillas
+        if (ch === '"') {
+          // Si el siguiente carácter también es una comilla, es una comilla escapada
+          if (i < row.length - 1 && row[i + 1] === '"') {
+            current += '"';
+            i++; // Saltar el siguiente carácter
+          } else {
+            // Es la comilla de cierre
+            inQuotes = false;
+          }
+        } else {
+          current += ch;
+        }
       } else {
-        current += ch;
+        // No estamos dentro de comillas
+        if (ch === '"') {
+          inQuotes = true;
+        } else if (ch === ",") {
+          values.push(current);
+          current = "";
+        } else {
+          current += ch;
+        }
       }
     }
     values.push(current);
@@ -105,7 +124,6 @@ function parseCSV(text) {
     return obj;
   });
 }
-
 // ========== 5) CSV BUILD (quote seguro) ==========
 function convertirDatosACSV(rows) {
   const headerRow = CORRECT_HEADERS.join(",");
